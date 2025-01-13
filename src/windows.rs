@@ -17,7 +17,11 @@ pub fn get() -> io::Result<OsString> {
         // Don't care much about the result here,
         // it is guaranteed to return an error,
         // since we passed the NULL pointer as a buffer
-        let result = GetComputerNameExW(ComputerNamePhysicalDnsHostname, PWSTR::null(), &mut size);
+        let result = GetComputerNameExW(
+            ComputerNamePhysicalDnsHostname,
+            Some(PWSTR::null()),
+            &mut size,
+        );
         debug_assert!(result.is_err());
     };
 
@@ -26,7 +30,7 @@ pub fn get() -> io::Result<OsString> {
     let result = unsafe {
         GetComputerNameExW(
             ComputerNamePhysicalDnsHostname,
-            PWSTR::from_raw(buffer.as_mut_ptr()),
+            Some(PWSTR::from_raw(buffer.as_mut_ptr())),
             &mut size,
         )
     };
