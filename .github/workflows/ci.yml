@@ -32,7 +32,6 @@ jobs:
     # Matches the Rust Tier 1 platform support
     # See https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1-with-host-tools
     name: Tier 1
-    needs: lints
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
