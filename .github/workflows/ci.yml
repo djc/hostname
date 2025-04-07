@@ -63,6 +63,7 @@ jobs:
         with:
           toolchain: 1.74
           targets: ${{ matrix.target }}
+          components: rustfmt
       - uses: taiki-e/install-action@v2
         with:
           tool: cross
