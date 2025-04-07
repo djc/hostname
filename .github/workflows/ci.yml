@@ -45,9 +45,9 @@ jobs:
             use_cross: true
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-# TODO: Enable it back
-#          - os: windows-latest
-#            target: i686-pc-windows-gnu
+          # TODO: Enable it back
+          #          - os: windows-latest
+          #            target: i686-pc-windows-gnu
           - os: windows-latest
             target: i686-pc-windows-msvc
             use_cross: true
@@ -62,7 +62,7 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: 1.67.0
+          toolchain: 1.74
           targets: ${{ matrix.target }}
       - uses: taiki-e/install-action@v2
         with:
@@ -104,17 +104,6 @@ jobs:
             target: arm-unknown-linux-gnueabihf
           - os: ubuntu-latest
             target: armv7-unknown-linux-gnueabihf
-          # `rust-std` is not available
-          # - os: ubuntu-latest
-          #   target: loongarch64-unknown-linux-gnu
-          - os: ubuntu-latest
-            target: mips-unknown-linux-gnu
-          - os: ubuntu-latest
-            target: mips64-unknown-linux-gnuabi64
-          - os: ubuntu-latest
-            target: mips64el-unknown-linux-gnuabi64
-          - os: ubuntu-latest
-            target: mipsel-unknown-linux-gnu
           - os: ubuntu-latest
             target: powerpc-unknown-linux-gnu
           - os: ubuntu-latest
@@ -132,7 +121,7 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: 1.67.0
+          toolchain: 1.74
           targets: ${{ matrix.target }}
       - uses: taiki-e/install-action@v2
         with:
@@ -160,7 +149,7 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: 1.67.0
+          toolchain: 1.74
           targets: ${{ matrix.target }}
       - uses: taiki-e/install-action@v2
         with:
@@ -231,15 +220,6 @@ jobs:
             target: thumbv7neon-linux-androideabi
           - os: ubuntu-latest
             target: thumbv7neon-unknown-linux-gnueabihf
-          - os: macos-latest
-            target: x86_64-apple-ios
-          # `gethostname` function is not available
-          # - os: ubuntu-latest
-          #   target: x86_64-fortanix-unknown-sgx
-          #
-          # `rust-std` seems to be not available?
-          # - os: ubuntu-latest
-          #   target: x86_64-unknown-fuchsia
           - os: ubuntu-latest
             target: x86_64-linux-android
           - os: ubuntu-latest
@@ -251,7 +231,7 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: 1.67.0
+          toolchain: 1.74
           targets: ${{ matrix.target }}
       - uses: taiki-e/install-action@v2
         with:
@@ -281,7 +261,7 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: 1.67.0
+          toolchain: 1.74
           targets: ${{ matrix.target }}
       - uses: taiki-e/install-action@v2
         with:
