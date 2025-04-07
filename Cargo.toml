@@ -26,10 +26,14 @@ cfg-if = "^1.0"
 libc = "^0.2"
 
 [target.'cfg(target_os = "windows")'.dependencies]
-windows = { version = "^0.52", features = ["Win32_Foundation", "Win32_System_SystemInformation"] }
+windows-link = "0.1.1"
 
 [dev-dependencies]
 version-sync = "0.9"
+
+[target.'cfg(target_os = "windows")'.dev-dependencies]
+windows-bindgen = { version = "0.61" }
+similar-asserts = { version = "1.6.1" }
 
 [package.metadata.docs.rs]
 features = ["set"]
