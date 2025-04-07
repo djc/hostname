@@ -26,7 +26,7 @@ jobs:
 
       - name: Run clippy
         run: |
-          cargo clippy --all-targets --all-features -- -D warnings
+          cargo clippy --locked --all-targets --all-features -- -D warnings
 
   tier1:
     # Matches the Rust Tier 1 platform support
@@ -69,15 +69,15 @@ jobs:
           tool: cross
 
       - name: Check without features
-        run: cargo check --target=${{ matrix.target }}
+        run: cargo check --locked --target=${{ matrix.target }}
 
       - name: Check with all features enabled
-        run: ${{ env.CARGO_BINARY }} check --all-features --target=${{ matrix.target }}
+        run: ${{ env.CARGO_BINARY }} check --locked --all-features --target=${{ matrix.target }}
         env:
           CARGO_BINARY: ${{ matrix.use_cross == true && 'cross' || 'cargo' }}
 
       - name: Run tests
-        run: ${{ env.CARGO_BINARY }} test --all-features --target=${{ matrix.target }}
+        run: ${{ env.CARGO_BINARY }} test --locked --all-features --target=${{ matrix.target }}
         env:
           CARGO_BINARY: ${{ matrix.use_cross == true && 'cross' || 'cargo' }}
 
@@ -139,7 +139,7 @@ jobs:
           tool: cross
       - name: Run build
         run: |
-          cross build --all-features --target=${{ matrix.target }}
+          cross build --locked --all-features --target=${{ matrix.target }}
 
   tier2_with_host_tools_via_cross:
     # Matches Rust "Tier 2 with Host Tools" platform support
@@ -167,7 +167,7 @@ jobs:
           tool: cross
       - name: Run build
         run: |
-          cross build --all-features --target=${{ matrix.target }}
+          cross build --locked --all-features --target=${{ matrix.target }}
 
   tier2_without_host_tools:
     # Matches Rust "Tier 2 with host tools" platform support
@@ -258,7 +258,7 @@ jobs:
           tool: cross
       - name: Run build
         run: |
-          cross build --all-features --target=${{ matrix.target }}
+          cross build --locked --all-features --target=${{ matrix.target }}
 
   tier2_without_host_tools_default_features:
     # Matches Rust "Tier 2 with host tools" platform support
@@ -288,7 +288,7 @@ jobs:
           tool: cross
       - name: Run build (default features)
         run: |
-          cross build --target=${{ matrix.target }}
+          cross build --locked --target=${{ matrix.target }}
 
 # TODO: Tier 3
 # - x86_64-unknown-dragonfly
