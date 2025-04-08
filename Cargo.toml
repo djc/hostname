@@ -4,10 +4,6 @@ version = "0.4.0"
 description = "Cross-platform system's host name functions"
 categories = ["api-bindings", "os"]
 keywords = ["hostname", "gethostname", "sethostname"]
-authors = [
-    "fengcen <fengcen.love@gmail.com>",
-    "svartalf <self@svartalf.info>"
-]
 repository = "https://github.com/svartalf/hostname"
 readme = "README.md"
 license = "MIT"
