@@ -80,6 +80,11 @@ jobs:
         env:
           CARGO_BINARY: ${{ matrix.use_cross == true && 'cross' || 'cargo' }}
 
+      - name: Ensure bindings are up to date
+        run: |
+          cargo fmt
+          git diff --exit-code
+
   tier2_with_host_tools:
     # Matches Rust "Tier 2 with Host Tools" platform support
     # For as much as possible
