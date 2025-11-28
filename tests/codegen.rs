@@ -8,7 +8,7 @@ fn gen_bindings() {
     let output = "src/windows/bindings.rs";
     let existing = fs::read_to_string(output).unwrap();
 
-    bindgen(["--no-deps", "--etc", "tests/bindings.txt"]);
+    bindgen(["--no-deps", "--etc", "tests/bindings.txt"]).unwrap();
     let out = Command::new("rustfmt")
         .arg("--edition=2021")
         .arg(output)
