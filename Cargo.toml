@@ -25,11 +25,9 @@ libc = "0.2"
 windows-link = "0.2"
 
 [dev-dependencies]
-version-sync = "0.9"
-
-[target.'cfg(target_os = "windows")'.dev-dependencies]
-windows-bindgen = { version = "0.61" }
 similar-asserts = { version = "1.6.1" }
+version-sync = "0.9"
+windows-bindgen = { version = "0.61" }
 
 [package.metadata.docs.rs]
 features = ["set"]
