@@ -12,7 +12,7 @@ jobs:
           - macOS-latest
           - windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
@@ -57,7 +57,7 @@ jobs:
           - os: macos-latest
             target: x86_64-apple-darwin
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v6
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -116,7 +116,7 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-musl
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v6
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -143,7 +143,7 @@ jobs:
           - x86_64-unknown-illumos
           - x86_64-unknown-netbsd
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v6
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -216,7 +216,7 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnux32
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v6
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -245,7 +245,7 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-redox
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v6
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -268,7 +268,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v6
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@master
         with:
