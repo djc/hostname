@@ -22,7 +22,7 @@ cfg-if = "1"
 libc = "0.2"
 
 [target.'cfg(target_os = "windows")'.dependencies]
-windows-link = "0.2"
+windows-link = "0.100"
 
 [dev-dependencies]
 similar-asserts = { version = "2.0.0" }
