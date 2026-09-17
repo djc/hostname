@@ -45,11 +45,10 @@ fn wrap_buffer(mut bytes: Vec<u8>) -> OsString {
 #[cfg(feature = "set")]
 pub fn set(hostname: &OsStr) -> io::Result<()> {
     #[cfg(not(any(
+        target_vendor = "apple",
         target_os = "aix",
         target_os = "dragonfly",
         target_os = "freebsd",
-        target_os = "ios",
-        target_os = "macos",
         target_os = "solaris",
         target_os = "illumos"
     )))]
@@ -57,11 +56,10 @@ pub fn set(hostname: &OsStr) -> io::Result<()> {
     type hostname_len_t = libc::size_t;
 
     #[cfg(any(
+        target_vendor = "apple",
         target_os = "aix",
         target_os = "dragonfly",
         target_os = "freebsd",
-        target_os = "ios",
-        target_os = "macos",
         target_os = "solaris",
         target_os = "illumos"
     ))]
