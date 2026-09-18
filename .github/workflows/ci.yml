@@ -1,5 +1,9 @@
-on: push
 name: Continuous integration
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
 
 jobs:
   lints:
