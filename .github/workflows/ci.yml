@@ -90,7 +90,7 @@ jobs:
     #
     # See https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-2-with-host-tools
     name: Tier 2 (with Host Tools)
-    needs: tier1
+    needs: msrv
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -138,7 +138,7 @@ jobs:
     #
     # See https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-2-with-host-tools
     name: Tier 2 (with Host Tools, via Cross)
-    needs: tier1
+    needs: msrv
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -165,7 +165,7 @@ jobs:
     #
     # See https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-2-with-host-tools
     name: Tier 2 (without Host Tools)
-    needs: tier1
+    needs: msrv
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -241,7 +241,7 @@ jobs:
     #
     # See https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-2-with-host-tools
     name: Tier 2 (without Host Tools)
-    needs: tier1
+    needs: msrv
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -267,7 +267,7 @@ jobs:
     #
     # See https://doc.rust-lang.org/rustc/platform-support.html#tier-3
     name: Tier 3
-    needs: tier1
+    needs: msrv
     runs-on: ubuntu-latest
     strategy:
       matrix:
