@@ -261,6 +261,29 @@ jobs:
         run: |
           cross build --locked --target=${{ matrix.target }}
 
+  tier3:
+    # Matches Rust "Tier 3" platform support
+    # For as much as possible, but where `cross` is needed for cross-compilation
+    #
+    # See https://doc.rust-lang.org/rustc/platform-support.html#tier-3
+    name: Tier 3
+    needs: tier1
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - powerpc64-ibm-aix
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@nightly
+      - uses: taiki-e/install-action@v2.87.11
+        with:
+          tool: cross
+      - name: Run build
+        run: |
+          cross build -Zbuild-std --locked --all-features --target=${{ matrix.target }}
+
   msrv:
     name: MSRV
     strategy:
