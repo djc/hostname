@@ -67,7 +67,7 @@ jobs:
         with:
           targets: ${{ matrix.target }}
           components: rustfmt
-      - uses: taiki-e/install-action@v2.87.11
+      - uses: taiki-e/install-action@v2.87.15
         with:
           tool: cross
 
@@ -125,7 +125,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
-      - uses: taiki-e/install-action@v2.87.11
+      - uses: taiki-e/install-action@v2.87.15
         with:
           tool: cross
       - name: Run build
@@ -152,7 +152,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
-      - uses: taiki-e/install-action@v2.87.11
+      - uses: taiki-e/install-action@v2.87.15
         with:
           tool: cross
       - name: Run build
@@ -225,7 +225,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
-      - uses: taiki-e/install-action@v2.87.11
+      - uses: taiki-e/install-action@v2.87.15
         with:
           tool: cross
       - name: Run build
@@ -254,7 +254,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
-      - uses: taiki-e/install-action@v2.87.11
+      - uses: taiki-e/install-action@v2.87.15
         with:
           tool: cross
       - name: Run build (default features)
