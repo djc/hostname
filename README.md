@@ -3,7 +3,7 @@
 [![Latest Version](https://img.shields.io/crates/v/hostname.svg)](https://crates.io/crates/hostname)
 [![Latest Version](https://docs.rs/hostname/badge.svg)](https://docs.rs/hostname)
 [![Build Status](https://github.com/djc/hostname/actions/workflows/ci.yml/badge.svg)](https://github.com/djc/hostname/actions)
-![Minimum rustc Version](https://img.shields.io/badge/rustc-1.74+-green.svg)
+![Minimum rustc Version](https://img.shields.io/badge/rustc-1.71+-green.svg)
 ![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)
 ![crates.io](https://img.shields.io/crates/d/hostname)
 
@@ -17,7 +17,7 @@
 
 ## Rust version requirements
 
-Since version `0.4.0` this crate requires Rust version `1.74` or greater.
+Since version `0.4.3` this crate requires Rust version `1.71` or greater.
 
 This version is explicitly tested in CI
 and may be bumped in any major or minor release as needed.\

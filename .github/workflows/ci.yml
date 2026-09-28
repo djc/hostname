@@ -13,7 +13,7 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macOS-latest
+          - macos-latest
           - windows-latest
     steps:
       - uses: actions/checkout@v7
@@ -90,7 +90,7 @@ jobs:
     #
     # See https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-2-with-host-tools
     name: Tier 2 (with Host Tools)
-    needs: tier1
+    needs: msrv
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -138,7 +138,7 @@ jobs:
     #
     # See https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-2-with-host-tools
     name: Tier 2 (with Host Tools, via Cross)
-    needs: tier1
+    needs: msrv
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -165,7 +165,7 @@ jobs:
     #
     # See https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-2-with-host-tools
     name: Tier 2 (without Host Tools)
-    needs: tier1
+    needs: msrv
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -241,7 +241,7 @@ jobs:
     #
     # See https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-2-with-host-tools
     name: Tier 2 (without Host Tools)
-    needs: tier1
+    needs: msrv
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -261,21 +261,56 @@ jobs:
         run: |
           cross build --locked --target=${{ matrix.target }}
 
-  msrv:
-    name: MSRV
+  tier3:
+    # Matches Rust "Tier 3" platform support
+    # For as much as possible, but where `cross` is needed for cross-compilation
+    #
+    # See https://doc.rust-lang.org/rustc/platform-support.html#tier-3
+    name: Tier 3
+    needs: msrv
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - os: ubuntu-latest
-          - os: macos-latest
-          - os: windows-latest
-
-    runs-on: ${{ matrix.os }}
+        target:
+          - powerpc64-ibm-aix
     steps:
       - uses: actions/checkout@v7
       - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@master
+        uses: dtolnay/rust-toolchain@nightly
+      - uses: taiki-e/install-action@v2.87.11
         with:
-          toolchain: 1.85
+          tool: cross
+      - name: Run build
+        run: |
+          cross build -Zbuild-std --locked --all-features --target=${{ matrix.target }}
+
+  msrv:
+    name: MSRV
+    runs-on: ubuntu-latest
+    env:
+      # Matches Tier 1 job targets
+      TARGETS: |
+        aarch64-unknown-linux-gnu
+        i686-unknown-linux-gnu
+        x86_64-unknown-linux-gnu
+        i686-pc-windows-gnu
+        i686-pc-windows-msvc
+        x86_64-pc-windows-gnu
+        x86_64-pc-windows-msvc
+        x86_64-apple-darwin
+    steps:
+      - uses: actions/checkout@v7
+      - uses: taiki-e/install-action@v2.87.11
+        with:
+          tool: |
+            cargo-hack
+            cargo-minimal-versions
+          fallback: none
       - name: Check MSRV
-        run: cargo check --locked --lib --all-features
+        run: |
+          cargo minimal-versions check \
+            --workspace \
+            --feature-powerset \
+            --ignore-private \
+            --rust-version \
+            $(printf '%s\n' "$TARGETS" | xargs -n1 printf -- '--target %s ')
