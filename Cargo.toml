@@ -8,7 +8,7 @@ repository = "https://github.com/djc/hostname"
 readme = "README.md"
 license = "MIT"
 edition = "2021"
-rust-version = "1.85"
+rust-version = "1.71"
 
 [features]
 default = []
@@ -19,15 +19,15 @@ set = []
 cfg-if = "1"
 
 [target.'cfg(any(unix, target_os = "redox"))'.dependencies]
-libc = "0.2"
+libc = "0.2.140"
 
 [target.'cfg(target_os = "windows")'.dependencies]
-windows-link = "0.100"
+windows-link = "0.2"
 
 [dev-dependencies]
 similar-asserts = { version = "2.0.0" }
 version-sync = "0.9"
-windows-bindgen = "0.100"
+windows-bindgen = "0.66"
 
 [package.metadata.docs.rs]
 features = ["set"]
