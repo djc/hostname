@@ -4,6 +4,10 @@ use std::process::Command;
 use windows_bindgen::Bindgen;
 
 #[test]
+#[cfg_attr(
+    target_arch = "x86",
+    ignore = "spawning rustfmt from 32-bit processes fails on Ubuntu 26.04 runners"
+)]
 fn gen_bindings() {
     let output = "src/windows/bindings.rs";
     let existing = fs::read_to_string(output).unwrap();
